@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'capybara'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -64,3 +65,5 @@ group :development, :test do
   gem 'hirb'         # Hirb-1 モデルの出力結果を表形式で表示するGem
   gem 'hirb-unicode' # Hirb-2 日本語などマルチバイト文字の出力時の出力結果のずれに対応
 end
+
+gem "haml-rails", "~> 1.0"
