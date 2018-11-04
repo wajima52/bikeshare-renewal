@@ -67,3 +67,7 @@ group :development, :test do
 end
 
 gem "haml-rails", "~> 1.0"
+
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'devise-i18n'
