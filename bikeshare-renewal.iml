@@ -905,24 +905,24 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="loofah (vbundled(2.2.2)) [path][gem]" type="rubylib">
+      <library name="loofah (vbundled(2.2.3)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
         </properties>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/test" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/benchmark" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/benchmark" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/test" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/benchmark" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/benchmark" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/test" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.2/benchmark" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.5.0/gems/loofah-2.2.3/benchmark" />
         </excluded>
       </library>
     </orderEntry>
