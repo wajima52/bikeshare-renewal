@@ -55,4 +55,16 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "同じメールアドレスが登録された場合" do
+    it "バリデーションエラー" do
+      user.save
+      user2 = User.new(
+          username: "hanako",
+          email: "example@aa.com",
+          password: "hanako11"
+      )
+      expect(user2).not_to be_valid
+    end
+  end
+
 end
