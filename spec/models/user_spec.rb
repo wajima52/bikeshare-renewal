@@ -67,4 +67,8 @@ RSpec.describe User, type: :model do
     end
   end
 
+  it "ファクトリが有効であること" do
+    expect(FactoryBot.build(:user)).to be_valid
+  end
+
 end
