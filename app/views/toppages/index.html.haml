@@ -1,0 +1,44 @@
+%section#featured
+  / start slider
+  .container
+    .row
+      .col-lg-12
+        / Slider
+        = image_tag('toppage2.png')
+        .flex-caption
+          %h3
+            サイクリングに
+            %br/
+            出かけよう！
+          %p どこでも　気軽に自転車に乗れる！
+      / end slider
+%section.callaction
+  .container
+    .row
+      .col-lg-12
+        .big-cta
+          .cta-text
+            %h2
+              %span 貸し出し　新着情報
+%section#content
+  .container
+    .swiper-container
+      .swiper-wrapper
+      -#  - @bicycles.each do |bicycle|
+      -#    .swiper-slide
+      -#      .box
+      -#        .box-toppage.aligncenter
+      -#          %h4
+      -#            =bicycle.place
+      -#          %h4
+      -#            =bicycle.name
+      -#          .icon
+      -#            - if bicycle.image?
+      -#              #{image_tag bicycle.image.thumb.url}
+      -#            - else
+      -#              #{image_tag "no_image.png", size:"200"}
+      -#          %p
+      -#            = link_to '詳細を見る', bicycle_path(bicycle)
+      -#.swiper-pagination
+
+      
