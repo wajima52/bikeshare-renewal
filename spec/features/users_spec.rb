@@ -9,6 +9,7 @@ RSpec.feature "Users", type: :feature do
     fill_in "user[password]", with: user.password
     click_button "ログイン"
 
+    expect(current_path).to eq(root_path)
     expect(page).to have_content "ログインしました。"
   end
 
@@ -22,6 +23,7 @@ RSpec.feature "Users", type: :feature do
     fill_in "user[password_confirmation]", with: user.password
     click_button "アカウント登録"
 
+    expect(current_path).to eq(root_path)
     expect(page).to have_content"アカウント登録が完了しました。"
   end
 
@@ -41,6 +43,7 @@ RSpec.feature "Users", type: :feature do
     fill_in "user[password]", with: user.password
     click_button "ログイン"
 
+    expect(current_path).to eq(root_path)
     expect(page).to have_content "ログインしました。"
   end
 
