@@ -1,0 +1,8 @@
+ja:
+  enums:
+    bicycle:
+      bicycle_type:
+        unselected: '未選択'
+        road: 'ロードバイク'
+        mountain: 'マウンテンバイク'
+        other: 'その他'

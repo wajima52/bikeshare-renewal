@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +42,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'ruby-debug-ide'
+  gem 'debase'
 end
 
 group :development do
@@ -71,3 +73,4 @@ gem "haml-rails", "~> 1.0"
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'
+gem 'enum_help'

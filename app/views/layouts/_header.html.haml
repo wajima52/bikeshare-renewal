@@ -9,12 +9,12 @@
           %span.icon-bar
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          / %li= link_to '自転車一覧', bicycles_url
+          %li= link_to '自転車一覧', bicycles_url
           - if user_signed_in?
-            / %li= link_to '自転車登録', new_bicycle_url
+            %li= link_to '自転車登録', new_bicycle_url
             / %li= link_to '貸し出しリスト', pages_show_path
             / %li= link_to '借りたいリスト', wantings_page_path(current_user)
-            / %li= link_to 'プロフィール変更', edit_user_registration_path
+            %li= link_to 'プロフィール変更', edit_user_registration_path
             %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
           - else
             %li= link_to 'サインアップ', new_user_registration_path
