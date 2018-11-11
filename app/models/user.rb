@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable, :lockable
 
+  has_many :bicycles, dependent: :destroy
+
   validate :password_complexity
   validates :username, presence: true
 
