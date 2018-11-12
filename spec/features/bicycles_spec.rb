@@ -11,21 +11,25 @@ RSpec.feature "Bicycles", type: :feature do
     click_button "ログイン"
   end
 
-  scenario "正常なBicycle投稿" do
-    visit new_bicycle_path
-    fill_in "bicycle[name]", with: "Fenix"
-    select "ロードバイク", from: "bicycle[bicycle_type]"
-    click_button "登録"
+  describe 'newアクション'do
 
-    expect(page).to have_content("正常に登録されました")
-  end
+    scenario "正常なBicycle投稿" do
+      visit new_bicycle_path
+      fill_in "bicycle[name]", with: "Fenix"
+      select "ロードバイク", from: "bicycle[bicycle_type]"
+      click_button "登録"
 
-  scenario "名前を未入力で「登録」ボタンをクリック" do
-    visit new_bicycle_path
-    select "ロードバイク", from: "bicycle[bicycle_type]"
-    click_button "登録"
+      expect(page).to have_content("正常に登録されました")
+    end
 
-    expect(page).to have_content("自転車の名前を入力してください")
-    expect(current_path).to eq('/bicycles')
+    scenario "名前を未入力で「登録」ボタンをクリック" do
+      visit new_bicycle_path
+      select "ロードバイク", from: "bicycle[bicycle_type]"
+      click_button "登録"
+
+      expect(page).to have_content("自転車の名前を入力してください")
+      expect(current_path).to eq('/bicycles')
+    end
+
   end
 end
