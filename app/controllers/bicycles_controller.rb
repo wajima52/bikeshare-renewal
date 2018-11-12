@@ -1,0 +1,51 @@
+class BicyclesController < ApplicationController
+
+  before_action :authenticate_user!, only: [:create, :new, :destroy, :update]
+
+  def index
+    @bicycles = Bicycle.all.page(params[:page])
+  end
+
+  def show
+    @bicycle = Bicycle.find(params[:id])
+  end
+
+  def new
+    @bicycle = Bicycle.new
+  end
+
+  def create
+    @bicycle = current_user.bicycles.build(bicycle_params)
+
+    if @bicycle.save
+      flash[:succress] = '自転車が正常に登録されました'
+      redirect_to @bicycle
+    else
+      if !@bicycle.name.present?
+        flash[:danger] = '自転車の名前を入力してください'
+      else
+        flash[:danger] = '自転車の登録に失敗しました'
+      end
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+end
+
+private
+
+def set_bicycle
+    @bicycle = current_user.bicycles.find(params[:id])
+end
+
+def bicycle_params
+  params.require(:bicycle).permit(:name, :bicycle_type, :user, :image)
+end
