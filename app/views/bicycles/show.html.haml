@@ -1,0 +1,35 @@
+%section.callaction
+  .container
+    .row
+      .col-lg-12
+        .big-cta
+          .cta-text
+            %h1
+              = @bicycle.name
+              の詳細ページ
+.container
+  %table.table.table-show
+    %thead
+      %tr
+        %th.table-left
+        %th
+    %tbody
+      %tr
+        %td 車種
+        %td #{@bicycle.name}
+      %tr
+        %td 自転車のタイプ
+        %td #{@bicycle.bicycle_type_i18n}
+      %tr
+        %td 貸し出し人
+        %td #{@bicycle.user.username}
+  %br/
+  - if @bicycle.image.attached?
+    = image_tag @bicycle.image.variant(resize: '480x480')
+  - else
+    = image_tag "no_image.png", size:"300"
+  %br/
+  - if user_signed_in?
+    - if current_user == @bicycle.user
+      = link_to '編集する', edit_bicycle_path(@bicycle)
+      = link_to '削除する', @bicycle, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }
