@@ -4,12 +4,10 @@
       %li.media
         .well.center-block{:style => "width:50%;"}
           .media-left
-            - if bicycle.image?
-              　　#{image_tag bicycle.image.thumb.url}
+            - if bicycle.image.attached?
+              = image_tag bicycle.image.variant(resize: '100x100')
             - else
-              　　#{image_tag "no_image.png", size:"100"}
-
-            　
+              = image_tag "no_image.png", size:"100"
           .media-body
             .h3
               車種：#{bicycle.name}

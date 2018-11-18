@@ -11,21 +11,54 @@ RSpec.feature "Bicycles", type: :feature do
     click_button "ログイン"
   end
 
-  scenario "正常なBicycle投稿" do
-    visit new_bicycle_path
-    fill_in "bicycle[name]", with: "Fenix"
-    select "ロードバイク", from: "bicycle[bicycle_type]"
-    click_button "登録"
+  describe 'new, createアクション'do
+    scenario "正常なBicycle投稿" do
+      visit new_bicycle_path
+      fill_in "bicycle[name]", with: "Fenix"
+      select "ロードバイク", from: "bicycle[bicycle_type]"
+      click_button "登録"
 
-    expect(page).to have_content("正常に登録されました")
+      expect(page).to have_content("正常に登録されました")
+    end
+
+    scenario "名前を未入力で「登録」ボタンをクリック" do
+      visit new_bicycle_path
+      select "ロードバイク", from: "bicycle[bicycle_type]"
+      click_button "登録"
+
+      expect(page).to have_content("自転車の名前を入力してください")
+      expect(current_path).to eq('/bicycles')
+    end
   end
 
-  scenario "名前を未入力で「登録」ボタンをクリック" do
-    visit new_bicycle_path
-    select "ロードバイク", from: "bicycle[bicycle_type]"
-    click_button "登録"
+  describe 'edit, updateアクション'do
+    before do
+      visit new_bicycle_path
+      fill_in "bicycle[name]", with: "Fenix"
+      select "ロードバイク", from: "bicycle[bicycle_type]"
+      click_button "登録"
+    end
 
-    expect(page).to have_content("自転車の名前を入力してください")
-    expect(current_path).to eq('/bicycles')
+    scenario "正常なBicycle編集" do
+      visit edit_bicycle_path
+
+      fill_in "bicycle[name]", with: "BIG.NINE"
+      select "マウンテンバイク", from: "bicycle[bicycle_type]"
+      click_button "編集"
+
+      expect(Bicycle.first.name).to eq("BIG.NINE")
+      expect(Bicycle.first.bicycle_type).to eq("マウンテンバイク")
+    end
+
+    scenario "名前を未入力で「登録」ボタンをクリック" do
+      visit edit_bicycle_path
+
+      fill_in "bicycle[name]", with: ""
+      select "マウンテンバイク", from: "bicycle[bicycle_type]"
+      click_button "編集"
+
+      expect(page).to have_content("自転車の名前を入力してください")
+    end
   end
+
 end

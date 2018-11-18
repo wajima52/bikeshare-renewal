@@ -1,6 +1,7 @@
 class BicyclesController < ApplicationController
 
   before_action :authenticate_user!, only: [:create, :new, :destroy, :update]
+  before_action :set_bicycle, only: [:edit, :update, :destroy]
 
   def index
     @bicycles = Bicycle.all.page(params[:page])
@@ -12,6 +13,7 @@ class BicyclesController < ApplicationController
 
   def new
     @bicycle = Bicycle.new
+
   end
 
   def create
@@ -34,6 +36,17 @@ class BicyclesController < ApplicationController
   end
 
   def update
+    @bicycle = current_user.bicycles.find(params[:id])
+    if @bicycle.update(bicycle_params)
+      redirect_to @bicycle
+    else
+      if !@bicycle.name.present?
+        flash[:danger] = '自転車の名前を入力してください'
+      else
+        flash[:danger] = '自転車の登録に失敗しました'
+      end
+      render :new
+    end
   end
 
   def destroy

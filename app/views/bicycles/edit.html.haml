@@ -1,2 +1,6 @@
-%h1 Bicycles#edit
-%p Find me in app/views/bicycles/edit.html.haml
+.container
+  .well.center-block
+    %h1
+      = @bicycle.name
+      の編集ページ
+    = render 'form', bicycle: @bicycle
