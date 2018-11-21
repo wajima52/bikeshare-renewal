@@ -39,23 +39,28 @@ RSpec.feature "Bicycles", type: :feature do
       click_button "登録"
     end
 
+    let(:bicycle) { @user.bicycles.find_by(
+        name: "Fenix"
+    )}
+
     scenario "正常なBicycle編集" do
-      visit edit_bicycle_path
+      visit edit_bicycle_path(bicycle)
 
       fill_in "bicycle[name]", with: "BIG.NINE"
       select "マウンテンバイク", from: "bicycle[bicycle_type]"
-      click_button "編集"
+      click_button "登録"
 
-      expect(Bicycle.first.name).to eq("BIG.NINE")
-      expect(Bicycle.first.bicycle_type).to eq("マウンテンバイク")
+      expect(current_path).to eq(bicycle_path(bicycle))
+      expect(Bicycle.find(bicycle.id).name).to eq("BIG.NINE")
+      expect(Bicycle.find(bicycle.id).bicycle_type).to eq("mountain")
     end
 
     scenario "名前を未入力で「登録」ボタンをクリック" do
-      visit edit_bicycle_path
+      visit edit_bicycle_path(bicycle)
 
       fill_in "bicycle[name]", with: ""
       select "マウンテンバイク", from: "bicycle[bicycle_type]"
-      click_button "編集"
+      click_button "登録"
 
       expect(page).to have_content("自転車の名前を入力してください")
     end
