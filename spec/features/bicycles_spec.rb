@@ -13,10 +13,7 @@ RSpec.feature "Bicycles", type: :feature do
 
   describe 'new, createアクション'do
     scenario "正常なBicycle投稿" do
-      visit new_bicycle_path
-      fill_in "bicycle[name]", with: "Fenix"
-      select "ロードバイク", from: "bicycle[bicycle_type]"
-      click_button "登録"
+      create_bicycle
 
       expect(page).to have_content("正常に登録されました")
     end
@@ -32,11 +29,9 @@ RSpec.feature "Bicycles", type: :feature do
   end
 
   describe 'edit, updateアクション'do
+
     before do
-      visit new_bicycle_path
-      fill_in "bicycle[name]", with: "Fenix"
-      select "ロードバイク", from: "bicycle[bicycle_type]"
-      click_button "登録"
+      create_bicycle
     end
 
     let(:bicycle) { @user.bicycles.find_by(
@@ -66,4 +61,10 @@ RSpec.feature "Bicycles", type: :feature do
     end
   end
 
+  def create_bicycle
+    visit new_bicycle_path
+    fill_in "bicycle[name]", with: "Fenix"
+    select "ロードバイク", from: "bicycle[bicycle_type]"
+    click_button "登録"
+  end
 end
