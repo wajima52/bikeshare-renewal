@@ -31,7 +31,7 @@ RSpec.feature "Bicycles", type: :feature do
   describe 'edit, updateアクション'do
 
     before do
-      create_bicycle
+      create_bicycle_in_interface
     end
 
     let(:bicycle) { @user.bicycles.find_by(
@@ -61,7 +61,38 @@ RSpec.feature "Bicycles", type: :feature do
     end
   end
 
-  def create_bicycle
+  describe 'deleteアクション' do
+
+    before do
+      create_bicycle_in_interface
+    end
+
+    let(:bicycle) { @user.bicycles.find_by(
+        name: "Fenix"
+    )}
+
+    scenario "通常の削除操作" do
+      visit bicycle_path(bicycle)
+      click_link "削除する"
+
+      expect(Bicylce.find(bicycle.id)).not_to exists
+    end
+    #
+    # scenario "異なるuserが出品したbicycleは削除不可" do
+    #   it "bicycleの詳細画面で「削除する」リンクが表示されないこと" do
+    #
+    #   end
+    #
+    #   it "直接deleteメソッドを送っても拒否されること" do
+    #
+    #   end
+    #
+    # end
+  end
+
+  #以下、共通メソッド
+
+  def create_bicycle_in_interface
     visit new_bicycle_path
     fill_in "bicycle[name]", with: "Fenix"
     select "ロードバイク", from: "bicycle[bicycle_type]"

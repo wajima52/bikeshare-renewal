@@ -36,7 +36,6 @@ class BicyclesController < ApplicationController
   end
 
   def update
-    @bicycle = current_user.bicycles.find(params[:id])
     if @bicycle.update(bicycle_params)
       redirect_to @bicycle
     else
