@@ -13,7 +13,7 @@ RSpec.feature "Bicycles", type: :feature do
 
   describe 'new, createアクション'do
     scenario "正常なBicycle投稿" do
-      create_bicycle
+      create_bicycle_in_interface
 
       expect(page).to have_content("正常に登録されました")
     end
@@ -72,10 +72,10 @@ RSpec.feature "Bicycles", type: :feature do
     )}
 
     scenario "通常の削除操作" do
-      visit bicycle_path(bicycle)
-      click_link "削除する"
-
-      expect(Bicylce.find(bicycle.id)).not_to exists
+      expect{
+          visit bicycle_path(bicycle)
+          click_link "削除する"
+      }.to change{Bicycle.count}.by(-1)
     end
     #
     # scenario "異なるuserが出品したbicycleは削除不可" do

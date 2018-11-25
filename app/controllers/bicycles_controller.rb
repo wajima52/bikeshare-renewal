@@ -49,6 +49,10 @@ class BicyclesController < ApplicationController
   end
 
   def destroy
+    @bicycle.destroy
+
+    flash[:success] = 'bicycle は正常に削除されました'
+    redirect_to mypages_index_path
   end
 end
 
