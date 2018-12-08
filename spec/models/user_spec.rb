@@ -8,7 +8,6 @@ RSpec.describe User, type: :model do
       password: "example1"
   )}
 
-
   it "ユーザ名、メール、パスワードがあれば有効であること" do
     expect(user).to be_valid
   end
@@ -67,8 +66,10 @@ RSpec.describe User, type: :model do
     end
   end
 
+  let(:other_user) {FactoryBot.build(:other_user)}
+
   it "ファクトリが有効であること" do
-    expect(FactoryBot.build(:user)).to be_valid
+    expect(other_user).to be_valid
   end
 
 end

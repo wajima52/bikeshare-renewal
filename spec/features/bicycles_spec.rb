@@ -37,6 +37,9 @@ RSpec.feature "Bicycles", type: :feature do
     let(:bicycle) { @user.bicycles.find_by(
         name: "Fenix"
     )}
+    let(:other_bicycle) do
+      FactoryBot.create(:bicycle)
+    end
 
     scenario "正常なBicycle編集" do
       visit edit_bicycle_path(bicycle)
@@ -59,6 +62,11 @@ RSpec.feature "Bicycles", type: :feature do
 
       expect(page).to have_content("自転車の名前を入力してください")
     end
+
+    scenario "他のユーザが投稿した自転車の詳細画面で「編集する」リンクが表示されないこと"do
+      visit bicycle_path(other_bicycle)
+      page.has_no_link?('編集する')
+    end
   end
 
   describe 'deleteアクション' do
@@ -70,6 +78,9 @@ RSpec.feature "Bicycles", type: :feature do
     let(:bicycle) { @user.bicycles.find_by(
         name: "Fenix"
     )}
+    let(:other_bicycle) do
+      FactoryBot.create(:bicycle)
+    end
 
     scenario "通常の削除操作" do
       expect{
@@ -77,17 +88,11 @@ RSpec.feature "Bicycles", type: :feature do
           click_link "削除する"
       }.to change{Bicycle.count}.by(-1)
     end
-    #
-    # scenario "異なるuserが出品したbicycleは削除不可" do
-    #   it "bicycleの詳細画面で「削除する」リンクが表示されないこと" do
-    #
-    #   end
-    #
-    #   it "直接deleteメソッドを送っても拒否されること" do
-    #
-    #   end
-    #
-    # end
+
+    scenario "他のユーザが投稿したbicycleの詳細画面で「削除する」リンクが表示されないこと" do
+      visit bicycle_path(other_bicycle)
+      page.has_no_link?('削除する')
+    end
   end
 
   #以下、共通メソッド

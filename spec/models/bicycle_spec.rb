@@ -25,7 +25,6 @@ RSpec.describe Bicycle, type: :model do
 
       expect(bicycle).not_to be_valid
     end
-
   end
 
   describe "リレーションテスト" do

@@ -5,3 +5,5 @@ FactoryBot.define do
     bicycle_type 1
   end
 end
+
+
