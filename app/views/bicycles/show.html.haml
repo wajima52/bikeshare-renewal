@@ -29,6 +29,9 @@
   - else
     = image_tag "no_image.png", size:"300"
   %br/
-  - if user_signed_in? && current_user == @bicycle.user
-    = link_to '編集する', edit_bicycle_path(@bicycle)
-    = link_to '削除する', @bicycle, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }
+  - if user_signed_in?
+    -if current_user == @bicycle.user
+      = link_to '編集する', edit_bicycle_path(@bicycle)
+      = link_to '削除する', @bicycle, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }
+    -else
+      = render 'rental_relations/borrow_or_cancel_button', bicycle: @bicycle, rental_relation: @rental_relation

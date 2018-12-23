@@ -65,11 +65,4 @@ RSpec.describe User, type: :model do
       expect(user2).not_to be_valid
     end
   end
-
-  let(:other_user) {FactoryBot.build(:other_user)}
-
-  it "ファクトリが有効であること" do
-    expect(other_user).to be_valid
-  end
-
 end

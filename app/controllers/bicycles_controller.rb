@@ -1,5 +1,7 @@
 class BicyclesController < ApplicationController
 
+  require 'pry'
+
   before_action :authenticate_user!, only: [:create, :new, :destroy, :update]
   before_action :set_bicycle, only: [:edit, :update, :destroy]
 
@@ -9,11 +11,11 @@ class BicyclesController < ApplicationController
 
   def show
     @bicycle = Bicycle.find(params[:id])
+    @rental_relation = @bicycle.rental_relations.build(borrow_user_id: current_user.id)
   end
 
   def new
     @bicycle = Bicycle.new
-
   end
 
   def create

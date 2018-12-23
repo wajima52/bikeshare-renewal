@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_130537) do
+ActiveRecord::Schema.define(version: 2018_12_08_061942) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 2018_11_11_130537) do
     t.index ["user_id"], name: "index_bicycles_on_user_id"
   end
 
+  create_table "rental_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "bicycle_id"
+    t.bigint "borrow_user_id"
+    t.integer "answer", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bicycle_id", "borrow_user_id"], name: "index_rental_relations_on_bicycle_id_and_borrow_user_id", unique: true
+    t.index ["bicycle_id"], name: "index_rental_relations_on_bicycle_id"
+    t.index ["borrow_user_id"], name: "index_rental_relations_on_borrow_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,4 +81,6 @@ ActiveRecord::Schema.define(version: 2018_11_11_130537) do
   end
 
   add_foreign_key "bicycles", "users"
+  add_foreign_key "rental_relations", "bicycles"
+  add_foreign_key "rental_relations", "users", column: "borrow_user_id"
 end

@@ -15,11 +15,16 @@
           %tr
             %th 名前
             %th タイプ
+            %th 希望者
         %tbody
           - @bicycles.each do |bicycle|
             %tr
               %td= bicycle.name
               %td= bicycle.bicycle_type
+              - if bicycle.borrow_users.any?
+                %td= link_to '希望者あり', bicycle_rental_relations_path(bicycle)
+              -else
+                %td 希望者なし
               %td
                 = link_to '詳細', bicycle_path(bicycle)
     - else

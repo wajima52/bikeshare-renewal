@@ -67,6 +67,8 @@ RSpec.feature "Bicycles", type: :feature do
       visit bicycle_path(other_bicycle)
       page.has_no_link?('編集する')
     end
+
+
   end
 
   describe 'deleteアクション' do

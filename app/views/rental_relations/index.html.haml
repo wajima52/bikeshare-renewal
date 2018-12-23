@@ -1,0 +1,19 @@
+%section.callaction
+  .container
+    .row
+      .col-lg-12
+        .big-cta
+          .cta-text
+            %h1
+              = @bicycle.name
+              の希望者一覧
+.container
+  .return_button
+    %table.table.table-hover
+      %thead
+        %tr
+          %th 名前
+      %tbody
+        - @borrow_users.each do |borrow_user|
+          %tr
+            %td= borrow_user.username
