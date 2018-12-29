@@ -2,14 +2,8 @@ require 'rails_helper'
 
 RSpec.describe RentalRelation, type: :model do
 
-
-  let(:user) { FactoryBot.create(:user)}
   let(:bicycle) { FactoryBot.create(:bicycle)}
-  let(:borrow_user) { User.create(
-      username: "taro",
-      email: "example@aa.com",
-      password: "example1"
-  )}
+  let(:borrow_user) {FactoryBot.create(:user)}
 
   context 'CRUD, バリデーション' do
     it 'bicycle_idとborrow_userの情報があればcreateが成功すること' do
