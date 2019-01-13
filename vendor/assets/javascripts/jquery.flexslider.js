@@ -825,7 +825,7 @@
     initDelay: 0,                   //{NEW} Integer: Set an initialization delay, in milliseconds
     randomize: false,               //Boolean: Randomize slide order
     
-    // Usability features
+    // Usability systems
     pauseOnAction: true,            //Boolean: Pause the slideshow when interacting with control elements, highly recommended.
     pauseOnHover: false,            //Boolean: Pause the slideshow when hovering over slider, then resume when no longer hovering
     useCSS: true,                   //{NEW} Boolean: Slider will use CSS3 transitions if available

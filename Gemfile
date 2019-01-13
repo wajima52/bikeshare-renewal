@@ -44,6 +44,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'ruby-debug-ide'
   gem 'debase'
+  gem 'launchy', '~> 2.4.3'
+  gem 'poltergeist'
 end
 
 group :development do

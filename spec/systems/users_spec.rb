@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
+RSpec.describe "Users", type: :system do
   scenario "正常なユーザーログイン" do
     user = FactoryBot.create(:user)
 

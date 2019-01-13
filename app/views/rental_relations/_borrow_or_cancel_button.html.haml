@@ -1,9 +1,11 @@
 - if current_user.borrow?(bicycle)
-  = form_for(rental_relation.find_by(bicycle_id: bicycle.id), html: { method: :delete }) do |f|
+  - rental_relation = bicycle.rental_relations.find_by(borrow_user_id: current_user.id)
+  = form_for [bicycle, rental_relation], html: { method: :delete } do |f|
     = hidden_field_tag :bicycle_id, bicycle.id
-    = f.submit 'レンタル希望を申し込む', class: 'btn btn-danger btn-block'
+    = f.submit 'レンタル希望を取り消す', class: 'btn btn-danger btn-block'
 - else
-  = form_for(rental_relation, url: {controller: rental_relation, action:create }) do |f|
+  - rental_relation = bicycle.rental_relations.build(borrow_user_id: current_user.id)
+  = form_for [bicycle, rental_relation] do |f|
     = hidden_field_tag :bicycle_id, bicycle.id
-    = f.submit 'レンタル希望を取り消す', class: 'btn btn-primary btn-block'
+    = f.submit 'レンタルを申し込む', class: 'btn btn-primary btn-block'
 　　

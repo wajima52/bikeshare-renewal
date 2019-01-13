@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :rental_relation do
-    lend_user { nil }
-    borrow_user { nil }
-    answer { "MyString" }
+    association :bicycle
+    association :borrow_user, factory: :user
+    answer 0
   end
 end

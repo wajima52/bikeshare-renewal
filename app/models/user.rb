@@ -23,13 +23,13 @@ class User < ApplicationRecord
     end
   end
 
-  def cancell(bicycle)
+  def cancel(bicycle)
     rental_relation = self.rental_relations.find_by(bicycle_id: bicycle.id)
     rental_relation.destroy if rental_relation
   end
 
   def borrow?(bicycle)
-    self.rental_relations.include?(bicycle)
+    !!self.rental_relations.find_by(bicycle_id: bicycle.id)
   end
 
 end

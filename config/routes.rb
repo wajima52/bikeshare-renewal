@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root to: 'toppages#index'
 
   resources :bicycles do
-    resources :rental_relations, only: [:index, :create, :edit, :update, :delete]
+    resources :rental_relations, only: [:index, :create, :edit, :update, :destroy]
   end
 end

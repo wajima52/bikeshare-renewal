@@ -11,7 +11,7 @@ class BicyclesController < ApplicationController
 
   def show
     @bicycle = Bicycle.find(params[:id])
-    @rental_relation = @bicycle.rental_relations.build(borrow_user_id: current_user.id)
+    @rental_relation = @bicycle.rental_relations.find_by(borrow_user_id: current_user.id)
   end
 
   def new

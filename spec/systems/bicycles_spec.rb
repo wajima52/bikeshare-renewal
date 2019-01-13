@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Bicycles", type: :feature do
+RSpec.describe "Bicycles", type: :system do
 
   before do
     @user = FactoryBot.create(:user)
@@ -14,7 +14,6 @@ RSpec.feature "Bicycles", type: :feature do
   describe 'new, createアクション'do
     scenario "正常なBicycle投稿" do
       create_bicycle_in_interface
-
       expect(page).to have_content("正常に登録されました")
     end
 
